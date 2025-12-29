@@ -14,7 +14,7 @@ namespace TarodevController
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] private ScriptableStats _stats;
-        private Rigidbody2D _rb;
+        public Rigidbody2D _rb;
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
@@ -70,11 +70,18 @@ namespace TarodevController
         {
             CheckCollisions();
 
-            //HandleJump();
-            HandleDirection();
-            HandleGravity();
+            if (_pogoGrounded)
+            {
 
-            ApplyMovement();
+            }
+            else
+            {
+                HandleDirection();
+                HandleGravity();
+                ApplyMovement();
+            }
+                        
+            
         }
 
         #region Collisions
@@ -101,6 +108,8 @@ namespace TarodevController
                 _bufferedJumpUsable = true;
                 _endedJumpEarly = false;
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
+                
+                
             }
             // Left the Ground
             else if (_grounded && !groundHit)
@@ -154,6 +163,7 @@ namespace TarodevController
 
         private void HandleDirection()
         {
+            
             if (_frameInput.Move.x == 0)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
@@ -161,9 +171,14 @@ namespace TarodevController
             }
             else
             {
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+                _frameVelocity.x = Mathf.MoveTowards(
+                    _frameVelocity.x,
+                    _frameInput.Move.x * _stats.MaxSpeed,
+                    _stats.Acceleration * Time.fixedDeltaTime
+                );
             }
         }
+
 
         #endregion
 
@@ -182,6 +197,13 @@ namespace TarodevController
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
+
+        #endregion
+
+        #region pogoing
+
+        public bool _pogoGrounded;
+
 
         #endregion
 
