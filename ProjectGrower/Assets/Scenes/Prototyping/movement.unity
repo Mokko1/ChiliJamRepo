@@ -819,11 +819,10 @@ Transform:
   m_GameObject: {fileID: 1029969214}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.05, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1875, z: 1}
+  m_LocalPosition: {x: 1.141, y: 0, z: 0}
+  m_LocalScale: {x: 1.1654516, y: 0.1875, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1678693452}
+  m_Children: []
   m_Father: {fileID: 1080729745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1029969217
@@ -909,6 +908,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1678693452}
   - {fileID: 1029969215}
   m_Father: {fileID: 1822644477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -926,6 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1822644477}
   pc: {fileID: 1822644473}
+  pogoShaft: {fileID: 1678693451}
+  Collider2D: {fileID: 0}
 --- !u!70 &1080729749
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -958,8 +960,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.09248, y: -0.0032914842}
-  m_Size: {x: 1.1447977, y: 0.23001134}
+  m_Offset: {x: 1.3709234, y: -0.0032915175}
+  m_Size: {x: 1.640661, y: 0.23001343}
   m_Direction: 1
 --- !u!1 &1317403985
 GameObject:
@@ -1085,7 +1087,7 @@ Transform:
   m_GameObject: {fileID: 1317403985}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.12, y: 2.48, z: 0}
+  m_LocalPosition: {x: 6.12, y: 4.09, z: 0}
   m_LocalScale: {x: 2.6170967, y: 0.30173, z: 0.30173}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1215,7 +1217,7 @@ Transform:
   m_GameObject: {fileID: 1405651947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.75, y: 1.06, z: 0}
+  m_LocalPosition: {x: 10.33, y: 1.7, z: 0}
   m_LocalScale: {x: 2.6170967, y: 0.30173, z: 0.30173}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1247,11 +1249,11 @@ Transform:
   m_GameObject: {fileID: 1678693451}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.255, y: 0, z: 0}
-  m_LocalScale: {x: 0.7320625, y: 0.4125, z: 1}
+  m_LocalPosition: {x: 1.7074096, y: 0, z: 0}
+  m_LocalScale: {x: 0.85318345, y: 0.07734375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1029969215}
+  m_Father: {fileID: 1080729745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1678693453
 SpriteRenderer:
@@ -1470,6 +1472,7 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: e051465e17598544c9445d498c51f2f6, type: 2}
   _rb: {fileID: 0}
   _pogoGrounded: 0
+  _pogoJumping: 0
 --- !u!50 &1822644474
 Rigidbody2D:
   serializedVersion: 4

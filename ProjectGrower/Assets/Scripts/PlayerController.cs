@@ -70,7 +70,7 @@ namespace TarodevController
         {
             CheckCollisions();
 
-            if (_pogoGrounded)
+            if (_pogoGrounded || _pogoJumping)
             {
 
             }
@@ -108,8 +108,8 @@ namespace TarodevController
                 _bufferedJumpUsable = true;
                 _endedJumpEarly = false;
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
-                
-                
+                _pogoJumping = false;
+
             }
             // Left the Ground
             else if (_grounded && !groundHit)
@@ -190,12 +190,13 @@ namespace TarodevController
             {
                 _frameVelocity.y = _stats.GroundingForce;
             }
-            else
+            else if(!_pogoGrounded)
             {
                 var inAirGravity = _stats.FallAcceleration;
                 //if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
+            
         }
 
         #endregion
@@ -203,6 +204,7 @@ namespace TarodevController
         #region pogoing
 
         public bool _pogoGrounded;
+        public bool _pogoJumping;
 
 
         #endregion
